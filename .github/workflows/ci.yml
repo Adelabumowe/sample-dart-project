@@ -20,11 +20,15 @@ jobs:
       - name: Install Snyk CLI
         run: npm install -g snyk
 
+
+      - name: Run Dart Analyzer
+        run: dart analyze
+        
       - name: 🔍 Run Semgrep for SAST
         uses: returntocorp/semgrep-action@v1
         with:
           config: auto
-          
+
       - name: Authenticate Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
